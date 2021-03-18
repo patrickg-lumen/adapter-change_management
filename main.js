@@ -84,9 +84,25 @@ function processRequestResults(error, response, body, callback) {
    * This function must not check for a hibernating instance;
    * it must call function isHibernating.
    */
+   if (error) {
+	let myError = null ;
+	let myData = null ;
+	console.log('error present in GET or POST')
+    myerror = error ; } else if (isHibernating(response)) {
+        myError = 'ServiceNow Instance is Hibernating' ;
+        console.log('myError');
+        return myError ; 
+        // it is not hibernating, so we continue
+    } else if (!validResponseRegex.test(response.statusCode)) { 
+        myError = 'non-200 status code received' ;
+        console.log('myError');
+        return myError ; } else {
+            myData = response ;
+            myError = error ; 
+        }	
+		
+	return callback(myData, myError);
 }
-
-if isHibernating()
 
 /**
  * @function sendRequest
@@ -116,7 +132,16 @@ function sendRequest(callOptions, callback) {
    * from the previous lab. There should be no
    * hardcoded values.
    */
-  const requestOptions = {};
+  const requestOptions = {
+      method: callOptions.method,
+      auth: {
+          user: options.username,
+          pass: options.password,
+      },
+      baseUrl: options.url,
+      uri: uri
+  };
+
   request(requestOptions, (error, response, body) => {
     processRequestResults(error, response, body, (processedResults, processedError) => callback(processedResults, processedError));
   });
