@@ -1,4 +1,6 @@
 // Update this constant with your ServiceNow credentials
+// updated with what is needed for Lab3
+
 const options = {
   url: 'https://dev76574.service-now.com/',
   username: 'admin',
