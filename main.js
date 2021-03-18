@@ -31,15 +31,15 @@ function mainOnObject() {
   // You must write the arguments for get and post.
   connector.get((data,error) => {
       if (error) {
-          console.error('Error from GET: \n {$JSON.stringify(error)}');
+          console.error('Error from GET: \n  {$JSON.stringify(error)}');
       }
-      console.log('GET response was: \n ${JSON.stringify(data)}')
+      console.log('GET response was: \n' + JSON.stringify(data));
   });
   connector.post((data,error) => {
       if (error) {
-          console.error('Error from POST: \n {$JSON.stringify(error)}');
+          console.error('Error from POST: \n ' + JSON.stringify(error));
       }
-      console.log('POST response was: \n ${JSON.stringify(data)}')
+      console.log('POST response was: \n' + JSON.stringify(data));
   });
 }
 

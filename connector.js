@@ -139,7 +139,7 @@ class ServiceNowConnector {
             this.myError = error ; 
         }	
 		
-	return callback(myData, myError);
+	return callback(this.myData, this.myError);
 }
 
 /**
