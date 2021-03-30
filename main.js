@@ -188,6 +188,20 @@ healthcheck(callback) {
    *   handles the response.
    */
   getRecord(callback) {
+      // add per Itential labs's instructions
+      if typeof(this.body) === "object"  {
+      let changedobj = {
+    "change_ticket_number": `${this.number}`,
+    "active": `${this..body.active}`,
+    "priority":`${this.body.priority}`,
+    "description": `${this.body.description}`,
+    "work_start": `${this.body.work_start}`,
+    "work_end": `${this.body.work_end}`,
+    "change_ticket_key": `${this.body.sys_id}`
+        }
+      }
+      
+      return(changedobj) ;
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's get() method.
@@ -206,6 +220,7 @@ healthcheck(callback) {
    *   handles the response.
    */
   postRecord(callback) {
+      
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's post() method.
