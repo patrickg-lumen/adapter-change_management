@@ -188,19 +188,20 @@ healthcheck(callback) {
    *   handles the response.
    */
   getRecord(callback) {
-      // add per Itential labs's instructions
-      if typeof(this.body) === "object"  {
+      if (typeof(this.body) === "object") {
       let changedobj = {
     "change_ticket_number": `${this.number}`,
-    "active": `${this..body.active}`,
+    "active": `${this.body.active}`,
     "priority":`${this.body.priority}`,
     "description": `${this.body.description}`,
     "work_start": `${this.body.work_start}`,
     "work_end": `${this.body.work_end}`,
     "change_ticket_key": `${this.body.sys_id}`
         }
+      } else {
+          let error = "Unknown error occurred in GET" ; 
+          return (error);
       }
-      
       return(changedobj) ;
     /**
      * Write the body for this function.
@@ -220,7 +221,21 @@ healthcheck(callback) {
    *   handles the response.
    */
   postRecord(callback) {
-      
+            if (typeof(this.body) === "object")  {
+      let changedobj = {
+    "change_ticket_number": `${this.number}`,
+    "active": `${this.body.active}`,
+    "priority":`${this.body.priority}`,
+    "description": `${this.body.description}`,
+    "work_start": `${this.body.work_start}`,
+    "work_end": `${this.body.work_end}`,
+    "change_ticket_key": `${this.body.sys_id}`
+        }
+      } else {
+          let error = "Unknown error occurred in POST" ; 
+          return (error);
+      }
+      return(changedobj) ;
     /**
      * Write the body for this function.
      * The function is a wrapper for this.connector's post() method.
