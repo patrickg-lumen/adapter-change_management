@@ -8,8 +8,9 @@
     "engineer",
     "operator"
   ],
-  {
-  "name": "getRecord",
+"methods": [
+ { 
+"name": "getRecord",
   "summary": "Get Change Tickets",
   "description": "Get the first ServiceNow change management ticket.",
   "input": [],
@@ -25,7 +26,7 @@
       }
     }
   },
-  "roles": [
+    "roles": [
     "admin",
     "engineer",
     "operator"
@@ -38,7 +39,7 @@
   "description": "Get the first ServiceNow change management ticket.",
   "input": [],
   "output": {
-    "name": "changeTicket",
+    "name": "changeTickets",
     "type": "array",
     "description": "An array of objects. Each element is a change management ticket document.",
     "schema": {
@@ -49,12 +50,12 @@
       }
     }
   },
-  "roles": [
+    "roles": [
     "admin",
     "engineer",
     "operator"
   ],
-  "task": true
-}
 
+  "task": true
+} ]
 }
