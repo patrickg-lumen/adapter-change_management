@@ -95,26 +95,20 @@ class ServiceNowAdapter extends EventEmitter {
  */
 healthcheck(callback) {
  this.getRecord((result, error) => {
-   /**
-    * For this lab, complete the if else conditional
-    * statements that check if an error exists
-    * or the instance was hibernating. You must write
-    * the blocks for each branch.
-    */
    if (error) {
        emitOffline();
        /* execute the callback */
 
 	log.error("ServiceNow detected as OFFLINE for ID: ", this.id);
 	if (callback) {
-        return callback(null, error);
-    }
+     callback(null, error);
+    } else {} 
     } else {
        log.debug("ONLINE: " , this.id);
 	    emitOnline();
     if (callback) {
-        return callback(result);
-    }
+     callback(result,null);
+    } else {} 
    }
  });
 }
@@ -215,5 +209,5 @@ healthcheck(callback) {
   }     
  }); 
 }  
-  
+}
 module.exports = ServiceNowAdapter ;

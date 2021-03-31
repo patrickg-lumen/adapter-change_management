@@ -76,8 +76,8 @@ class ServiceNowConnector {
  */
   constructUri(serviceNowTable, query = null) {
   let uri = `/api/now/table/${serviceNowTable}`;
-  if (this.query) {
-    uri = uri + '?' + this.query;
+  if (query) {
+    uri = uri + '?' + query;
   }
   return uri;
 }
@@ -126,22 +126,23 @@ class ServiceNowConnector {
 	let myError = null ;
 	let myData = null ;
 	console.log('error present in GET or POST');
-    myerror = error ; } else if (this.isHibernating(response)) {
-        this.myError = 'ServiceNow Instance is Hibernating' ;
-        console.log('myError - ServiceNow Hibernating');
-        return this.myError ; 
+    myError = error ; } else if (this.isHibernating(response)) {
+        myError = "ServiceNow Instance is Hibernating" ;
+        console.log("myError - ServiceNow Hibernating");
+        return myError ; 
         // it is not hibernating, so we continue
     } else if (!validResponseRegex.test(response.statusCode)) { 
         this.myError = response ;
-        console.log('myError - Status Code not 2xx');
-        return this.myError ; } else {
-            this.myData = response ;
-            this.myError = error ; 
-        }	
+        console.log("myError - Status Code not 2xx");
+        return this.myError ; } 
+        
+        //else {
+         //   this.myData = response ;
+          //  this.myError = error ; 
+       // }	
 		
 	return callback(this.myData, this.myError);
-}
-
+ }
 /**
  * @memberof ServiceNowConnector
  * @method post
